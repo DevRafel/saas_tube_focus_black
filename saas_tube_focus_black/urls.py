@@ -4,12 +4,14 @@ from django.urls import path, include
 from rest_framework import routers
 
 from app.api import viewsets as pastaviewsets
+from app.api import viewsets as subpastaviewsets
 
-route = routers.DefaultRouter()
+router = routers.DefaultRouter()
 
-route.register(r'api', pastaviewsets.PastaViewSet, basename="api" )
+router.register(r'api', pastaviewsets.PastaViewSet, basename="api" )
+router.register(r'subpasta', subpastaviewsets.SubPastaViewSet, basename='subpasta' )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(route.urls))
+    path('', include(router.urls))
 ]
