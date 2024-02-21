@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from app import models
 
-class AppSerializer(serializers.ModelSerializer):
+class PastaSerializer(serializers.ModelSerializer):
        class Meta:
-              model = models.App
+              model = models.Pasta
               fields = '__all__'
