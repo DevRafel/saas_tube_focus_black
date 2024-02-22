@@ -5,13 +5,12 @@ from uuid import uuid1
 
 class Pasta(models.Model):
        id_pasta = models.UUIDField(primary_key=True, default=uuid1, editable=False)
-       nome = models.CharField(max_length=20)
+       nome = models.CharField(max_length=20, default='New Folder')
        
        
 class SubPasta(models.Model):
        id_subpasta = models.UUIDField(primary_key = True, default=uuid1, editable=False)
-       nome = models.CharField(max_length=20)
-       descricao = models.TextField()
-       pasta = models.ForeignKey(Pasta, on_delete=models.CASCADE, related_name='subpastas')
-       
+       nome = models.CharField(max_length=20, default='NEW ARQUIVOS' )
+       descricao = models.TextField(default='Description')
+       id_pasta_pai = models.ForeignKey(Pasta, on_delete=models.CASCADE, related_name='subpastas')
        

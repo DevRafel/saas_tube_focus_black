@@ -8,7 +8,7 @@ from app.api import viewsets as subpastaviewsets
 
 router = routers.DefaultRouter()
 
-router.register(r'api', pastaviewsets.PastaViewSet, basename="api" )
+router.register(r'pasta', pastaviewsets.PastaViewSet, basename="pasta" )
 router.register(r'subpasta', subpastaviewsets.SubPastaViewSet, basename='subpasta' )
 
 urlpatterns = [
