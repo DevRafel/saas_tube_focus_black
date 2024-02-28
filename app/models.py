@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 import shortuuid
 from uuid import uuid1
 
@@ -23,5 +24,13 @@ class BoardApp(models.Model):
     resumo = models.TextField(default='resumo', blank=True, null=True)
     ai = models.TextField(default='ai', blank=True, null=True)
     min_importante = models.CharField(max_length=8, blank=True, null=True)
-    id_subpasta_pai = models.ForeignKey(SubPasta, on_delete=models.CASCADE, related_name='boardapp', blank=True, null=True)
+    id_subpasta_pai = models.ForeignKey(SubPasta, on_delete=models.CASCADE, related_name='subpastas')
+
+    def save(self, *args, **kwargs):
+        # Verificar se já existe um BoardApp com o mesmo id_subpasta_pai
+        existing_board_app = BoardApp.objects.filter(id_subpasta_pai=self.id_subpasta_pai).first()
+        if existing_board_app:
+            raise ValidationError('Já existe um BoardApp para esta subpasta.')
+
+        super(BoardApp, self).save(*args, **kwargs)
   
