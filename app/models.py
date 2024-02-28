@@ -14,9 +14,6 @@ class SubPasta(models.Model):
        nome = models.CharField(max_length=20, default='NEW ARQUIVOS' )
        descricao = models.TextField(default='Description')
        id_pasta_pai = models.ForeignKey(Pasta, on_delete=models.CASCADE, related_name='subpastas')
-       
-import shortuuid
-from django.db import models
 
 class BoardApp(models.Model):
     id_board_app = models.CharField(max_length=22, primary_key=True, default=shortuuid.uuid, editable=False)
