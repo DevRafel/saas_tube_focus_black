@@ -93,8 +93,12 @@ WSGI_APPLICATION = 'saas_tube_focus_black.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '*fgc55EC5GFB5C**f34Geg5B3aebdb1d',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '40921',
     }
 }
 
